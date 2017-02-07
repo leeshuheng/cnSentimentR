@@ -10,4 +10,4 @@ Maintainer: Li Shao Dan <leeshuheng@ymail.com>
 Depends: R (>= 3.1.0), e1071, jiebaR, tm, SparseM
 Description: Analyse Sentiment of Chinese Text. To use 'jiebaR' to segment word,
 	and to use svm[e1071] to classify.
-License: GPL (>= 2)
+License: GPL-2 | file LICENSE
