@@ -19,6 +19,8 @@ fit <- cnsr.train(train.set)
 
 # test.set <- read.csv("./test_set.csv", header = T, sep = ",", stringsAsFactors = F)
 
+# test.set <- cnsr.prepare(test.set)
+
 test.set <- train.set[sample(1:nrow(train.set), 100, replace = F),]
 
 test.set <- cnsr.predict(fit, test.set)
