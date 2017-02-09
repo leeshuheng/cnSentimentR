@@ -16,14 +16,14 @@ cnsr.prepare(data, seg = NULL)
 	  A data.frame. It must contain a column 'content' that is chinese context.
 }
   \item{seg}{
-	  A segment word machine. If it is 'NULL', function use 'jiebaR'
+	  A segment word machine. If it is 'NULL', the function use 'jiebaR'
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-	return a data.frame.
+	Return a data.frame.
 }
 \references{
 	URL: https://github.com/leeshuheng/cnSentimentR

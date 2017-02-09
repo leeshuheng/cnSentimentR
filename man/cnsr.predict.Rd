@@ -13,27 +13,23 @@ cnsr.predict(fit, text)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{fit}{
-	  reture from cnsr.train
+	  Reture from cnsr.train
 }
   \item{text}{
-	  a data.frame, return from cnsr.prepare
+	  A data.frame, return from cnsr.prepare
 }
 }
 \details{
 	Calculate sentiment of a Chinese sentence
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+	Return a data.frame.
 }
 \references{
-%% ~put references to the literature/web site here ~
+	URL: https://github.com/leeshuheng/cnSentimentR
 }
 \author{
-%%  ~~who you are~~
+	\packageAuthor{cnSentimentR}
 }
 \note{
 %%  ~~further notes~~
@@ -45,16 +41,20 @@ cnsr.predict(fit, text)
 	cnsr.train,cnsr.prepare
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+devtools::install_github("leeshuheng/cnSentimentR")
 
-## The function is currently defined as
-function (fit, text) 
-{
-    res <- cal.sentiment(fit, text)
-    return(list(sentiment = as.numeric(res[["label"]]), value = res[["value"]]))
-  }
+train.set <- read.csv("./train_set.csv", header = T, sep = ",", stringsAsFactors = F)
+train.set <- train.set[,c("sentiment", "content")]
+
+library(cnSentimentR)
+
+train.set <- cnsr.prepare(train.set)
+fit <- cnsr.train(train.set)
+# test.set <- read.csv("./test_set.csv", header = T, sep = ",", stringsAsFactors = F)
+# test.set <- cnsr.prepare(test.set)
+test.set <- train.set[sample(1:nrow(train.set), 100, replace = F),]
+
+test.set <- cnsr.predict(fit, test.set)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

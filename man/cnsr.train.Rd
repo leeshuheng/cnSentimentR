@@ -13,7 +13,7 @@ cnsr.train(data)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-%%     ~~Describe \code{data} here~~
+	  A data.frame. Return from cnsr.prepare.
 }
 }
 \details{
@@ -27,10 +27,10 @@ cnsr.train(data)
 %% ...
 }
 \references{
-%% ~put references to the literature/web site here ~
+	URL: https://github.com/leeshuheng/cnSentimentR
 }
 \author{
-%%  ~~who you are~~
+	\packageAuthor{cnSentimentR}
 }
 \note{
 %%  ~~further notes~~
@@ -39,18 +39,23 @@ cnsr.train(data)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+	cnsr.predict,cnsr.prepare
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+devtools::install_github("leeshuheng/cnSentimentR")
 
-## The function is currently defined as
-function (data) 
-{
-    return(create.svm.mod(data))
-  }
+train.set <- read.csv("./train_set.csv", header = T, sep = ",", stringsAsFactors = F)
+train.set <- train.set[,c("sentiment", "content")]
+
+library(cnSentimentR)
+
+train.set <- cnsr.prepare(train.set)
+fit <- cnsr.train(train.set)
+# test.set <- read.csv("./test_set.csv", header = T, sep = ",", stringsAsFactors = F)
+# test.set <- cnsr.prepare(test.set)
+test.set <- train.set[sample(1:nrow(train.set), 100, replace = F),]
+
+test.set <- cnsr.predict(fit, test.set)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
