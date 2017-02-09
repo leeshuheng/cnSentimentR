@@ -5,7 +5,7 @@
 	cnsr.prepare
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+	Preprocess text.
 }
 \usage{
 cnsr.prepare(data, seg = NULL)
@@ -13,27 +13,23 @@ cnsr.prepare(data, seg = NULL)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-%%     ~~Describe \code{data} here~~
+	  A data.frame. It must contain a column 'content' that is chinese context.
 }
   \item{seg}{
-%%     ~~Describe \code{seg} here~~
+	  A segment word machine. If it is 'NULL', function use 'jiebaR'
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+	return a data.frame.
 }
 \references{
-%% ~put references to the literature/web site here ~
+	URL: https://github.com/leeshuheng/cnSentimentR
 }
 \author{
-%%  ~~who you are~~
+	\packageAuthor{cnSentimentR}
 }
 \note{
 %%  ~~further notes~~
@@ -42,22 +38,23 @@ cnsr.prepare(data, seg = NULL)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+	cnsr.predict,cnsr.train
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+devtools::install_github("leeshuheng/cnSentimentR")
 
-## The function is currently defined as
-function (data, seg = NULL) 
-{
-    data$seg <- ""
-    for (i in 1:nrow(data)) data[i, ]$seg <- do.segment(data$content, 
-        seg)
-    data$content <- NULL
-    return(data)
-  }
+train.set <- read.csv("./train_set.csv", header = T, sep = ",", stringsAsFactors = F)
+train.set <- train.set[,c("sentiment", "content")]
+
+library(cnSentimentR)
+
+train.set <- cnsr.prepare(train.set)
+fit <- cnsr.train(train.set)
+# test.set <- read.csv("./test_set.csv", header = T, sep = ",", stringsAsFactors = F)
+# test.set <- cnsr.prepare(test.set)
+test.set <- train.set[sample(1:nrow(train.set), 100, replace = F),]
+
+test.set <- cnsr.predict(fit, test.set)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
