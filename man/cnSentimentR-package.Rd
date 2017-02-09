@@ -13,8 +13,6 @@
 The DESCRIPTION file:
 \packageDESCRIPTION{cnSentimentR}
 \packageIndices{cnSentimentR}
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
 }
 \author{
 \packageAuthor{cnSentimentR}
@@ -22,15 +20,11 @@ The DESCRIPTION file:
 Maintainer: \packageMaintainer{cnSentimentR}
 }
 \references{
-~~ Literature or other references for background information ~~
+	URL: https://github.com/leeshuheng/cnSentimentR
 }
 ~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
 ~~ the R documentation directory ~~
 \keyword{ package }
 \seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
-~~ simple examples of the most important functions ~~
+	cnsr.predict,cnsr.train,cnsr.prepare
 }
