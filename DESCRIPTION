@@ -1,8 +1,8 @@
 Package: cnSentimentR
 Type: Package
 Title: Analyse Sentiment of Chinese Text
-Version: 1.0
-Date: 2017-02-07
+Version: 1.1
+Date: 2017-02-14
 Authors@R: c(person("Shao Dan", "Li", email = "leeshuheng@ymail.com",
 			role = c("aut", "cre")))
 Author: Shao Dan Lee [aut, cre]
