@@ -59,7 +59,12 @@ library(SparseM)
 				label = label[1]))
 }
 
-.create.svm.mod <- function(train) {
+.create.svm.mod <- function(train, control) {
+	cost <- control[["cost"]]
+	cross <- control[["cross"]]
+	tolerance <- control[["tolerance"]]
+	gamma <- control[["gamma"]]
+
 	txt <- Corpus(VectorSource(train$seg))
 	dtm <- DocumentTermMatrix(txt,
 					 control = list(wordLengths = c(1, Inf),
@@ -67,7 +72,7 @@ library(SparseM)
 	mod.row <- ncol(dtm)
 	mod <- svm(dtm, as.character(train$sentiment),
 			   probability = T,
-			   type = "C-classification", cost = 300,
-			   cross = 7, tolerance = 0.0001, method = "SVM")
+			   type = "C-classification", cost = cost,
+			   cross = cross, tolerance = tolerance, method = "SVM")
 	return(list(terms = Terms(dtm), nrow = mod.row, mod = mod))
 }

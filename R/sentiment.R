@@ -17,8 +17,9 @@ cnsr.prepare <- function(data, seg.fun = NULL) {
 	return(data)
 }
 
-cnsr.train <- function(data) {
-	return(.create.svm.mod(data))
+cnsr.train <- function(data, control = list(cost = 100, cross = 0,
+											tolerance = 0.001)) {
+	return(.create.svm.mod(data, control))
 }
 
 cnsr.predict <- function(fit, text) {
