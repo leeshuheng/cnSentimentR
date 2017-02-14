@@ -8,12 +8,15 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-cnsr.train(data)
+cnsr.train(data, control = list(cost = 1, cross = 0, tolerance = 0.001, gamma = 1/ncol(train)))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
 	  A data.frame. Return from cnsr.prepare.
+}
+  \item{control}{
+	  Some parameters of svm.
 }
 }
 \details{
