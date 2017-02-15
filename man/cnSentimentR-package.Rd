@@ -26,5 +26,5 @@ Maintainer: \packageMaintainer{cnSentimentR}
 ~~ the R documentation directory ~~
 \keyword{ package }
 \seealso{
-	cnsr.predict,cnsr.train,cnsr.prepare
+	cnsr.predict,cnsr.train,cnsr.prepare,cnsr.topic.word,cnsr.keyword
 }

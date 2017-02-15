@@ -38,7 +38,7 @@ cnsr.prepare(data, seg = NULL)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-	cnsr.predict,cnsr.train
+	cnsr.predict,cnsr.train,cnsr.topic.word,cnsr.keyword
 }
 \examples{
 devtools::install_github("leeshuheng/cnSentimentR")
@@ -55,6 +55,10 @@ fit <- cnsr.train(train.set)
 test.set <- train.set[sample(1:nrow(train.set), 100, replace = F),]
 
 test.set <- cnsr.predict(fit, test.set)
+
+cnsr.topic.word(test.set)
+
+cnsr.keyword(test.set)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

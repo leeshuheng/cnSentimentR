@@ -1,33 +1,29 @@
-\name{cnsr.train}
-\alias{cnsr.train}
+\name{cnsr.keyword}
+\alias{cnsr.keyword}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-	cnsr.train
+	cnsr.keyword
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+	Extract key words
 }
 \usage{
-cnsr.train(data, control = list(cost = 100, cross = 0, tolerance = 0.001, gamma = 1/ncol(train)))
+cnsr.keyword(data, topn = 10)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-	  A data.frame. Return from cnsr.prepare.
+	  data.frame
 }
-  \item{control}{
-	  Some parameters of svm.
+  \item{topn}{
+	  Number of word.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+	return positive and negative key word.
 }
 \references{
 	URL: https://github.com/leeshuheng/cnSentimentR
@@ -42,7 +38,7 @@ cnsr.train(data, control = list(cost = 100, cross = 0, tolerance = 0.001, gamma 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-	cnsr.predict,cnsr.prepare,cnsr.topic.word,cnsr.keyword
+	cnsr.predict,cnsr.train,cnsr.prepare,cnsr.topic.word
 }
 \examples{
 devtools::install_github("leeshuheng/cnSentimentR")
