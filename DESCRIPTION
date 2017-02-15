@@ -1,13 +1,13 @@
 Package: cnSentimentR
 Type: Package
 Title: Analyse Sentiment of Chinese Text
-Version: 1.1
-Date: 2017-02-14
+Version: 1.2
+Date: 2017-02-15
 Authors@R: c(person("Shao Dan", "Li", email = "leeshuheng@ymail.com",
 			role = c("aut", "cre")))
 Author: Shao Dan Lee [aut, cre]
 Maintainer: Li Shao Dan <leeshuheng@ymail.com>
-Depends: R (>= 3.1.0), e1071, jiebaR, tm, SparseM
+Depends: R (>= 3.1.0), e1071, jiebaR, tm, SparseM, lda, reshape2
 Description: Analyse Sentiment of Chinese Text. To use 'jiebaR' to segment word,
 	and to use svm[e1071] to classify.
 License: GPL-2 | file LICENSE

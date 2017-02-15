@@ -1,3 +1,5 @@
 export(cnsr.prepare)
 export(cnsr.train)
 export(cnsr.predict)
+export(cnsr.topic.word)
+export(cnsr.keyword)
