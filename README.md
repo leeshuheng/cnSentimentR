@@ -25,4 +25,10 @@ test.set <- train.set[sample(1:nrow(train.set), 100, replace = F),]
 
 test.set <- cnsr.predict(fit, test.set)
 
+cnsr.topic.word(test.set)
+cnsr.topic.word(test.set, topicn = 5, topn = 15)
+
+cnsr.keyword(test.set)
+cnsr.keyword(test.set, topn = 20)
+
 ```
