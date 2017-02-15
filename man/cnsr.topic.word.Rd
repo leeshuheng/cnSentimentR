@@ -2,10 +2,10 @@
 \alias{cnsr.topic.word}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-	Extract topic words
+	cnsr.topic.word
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+	Extract topic words
 }
 \usage{
 cnsr.topic.word(data, topicn = 3, topn = 10)
