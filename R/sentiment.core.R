@@ -11,6 +11,8 @@ library(jiebaR)
 library(e1071)
 library(tm)
 library(SparseM)
+library(lda)
+library(reshape2)
 #library(stringr)
 
 
@@ -75,4 +77,28 @@ library(SparseM)
 			   type = "C-classification", cost = cost,
 			   cross = cross, tolerance = tolerance, method = "SVM")
 	return(list(terms = Terms(dtm), nrow = mod.row, mod = mod))
+}
+
+.lda.topic.word <- function(data, topicn, topn) {
+	corpus <- lexicalize(data$seg)
+	res <- lda.collapsed.gibbs.sampler(corpus$documents, topicn,
+									   corpus$vocab, 25, 0.1, 0.1)
+	return(top.topic.words(res$topics, topn, by.score = T))
+}
+
+.tfidf.keyword <- function(data, topn) {
+	txt <- Corpus(VectorSource(data$seg))
+	tdm <- TermDocumentMatrix(txt, control = list(wordLengths = c(2, Inf)))
+	tfidf <- weightTfIdf(tdm)
+
+	term <- Terms(tfidf)
+	tfidf <- data.matrix(tfidf)
+	#rownames(tfidf) <- term
+	tfidf <- melt(tfidf)
+
+	tfidf <- aggregate(tfidf$value, by = list(tfidf$Terms), FUN = sum)
+	names(tfidf) <- c("Terms", "value")
+	tfidf <- tfidf[order(tfidf$value, decreasing = T),]
+
+	return(tfidf[1:topn,])
 }
