@@ -6,6 +6,7 @@
 ### K.I.S.S
 ### S.P.O.T
 
+### TODO: stop words
 
 library(jiebaR)
 library(e1071)
@@ -69,8 +70,8 @@ library(reshape2)
 
 	txt <- Corpus(VectorSource(train$seg))
 	dtm <- DocumentTermMatrix(txt,
-					 control = list(wordLengths = c(1, Inf),
-					removeNumbers = T))
+					 control = list(wordLengths = c(4, Inf),
+									removeNumbers = T))
 	mod.row <- ncol(dtm)
 	mod <- svm(dtm, as.character(train$sentiment),
 			   probability = T,
@@ -88,10 +89,11 @@ library(reshape2)
 
 .tfidf.keyword <- function(data, topn) {
 	txt <- Corpus(VectorSource(data$seg))
-	tdm <- TermDocumentMatrix(txt, control = list(wordLengths = c(2, Inf)))
+	tdm <- TermDocumentMatrix(txt, control = list(wordLengths = c(4, Inf),
+												  removeNumbers = T))
 	tfidf <- weightTfIdf(tdm)
 
-	term <- Terms(tfidf)
+	#term <- Terms(tfidf)
 	tfidf <- data.matrix(tfidf)
 	#rownames(tfidf) <- term
 	tfidf <- melt(tfidf)
