@@ -13,7 +13,8 @@ cnsr.train(data, control = list(cost = 100, cross = 0, tolerance = 0.001, gamma 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-	  A data.frame. Return from cnsr.prepare.
+	  A data.frame,result of cnsr.prepare. It must contain column 'sentiment', This column is the label of context,
+	  '0' is negative, '1' is positive.
 }
   \item{control}{
 	  Some parameters of svm.
