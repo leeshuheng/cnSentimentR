@@ -62,11 +62,12 @@ library(reshape2)
 				label = label[1]))
 }
 
+
 .create.svm.mod <- function(train, control) {
-	cost <- control[["cost"]]
-	cross <- control[["cross"]]
-	tolerance <- control[["tolerance"]]
-	gamma <- control[["gamma"]]
+	cost <- ifelse(!is.null(tmp <- control[["cost"]]), tmp, 100)
+	cross <- ifelse(!is.null(tmp <- control[["cross"]]), tmp, 0)
+	tolerance <- ifelse(!is.null(tmp <- control[["tolerance"]]), tmp, 0.001)
+	#gamma <- control[["gamma"]]
 
 	txt <- Corpus(VectorSource(train$seg))
 	dtm <- DocumentTermMatrix(txt,
