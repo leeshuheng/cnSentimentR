@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-cnsr.train(data, control = list(cost = 100, cross = 0, tolerance = 0.001, gamma = 1/ncol(train)))
+cnsr.train(data, control = list(cost = 100, cross = 0, tolerance = 0.001))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
