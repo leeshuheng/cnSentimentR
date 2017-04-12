@@ -7,7 +7,7 @@ An R package.
 
 devtools::install_github("leeshuheng/cnSentimentR")
 
-## Example for file train_set.csv ====
+## Example of file train_set.csv ====
 ## "sentiment","content"
 ## 1,你是个好人
 ## 0,你是个混蛋
