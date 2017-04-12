@@ -7,6 +7,11 @@ An R package.
 
 devtools::install_github("leeshuheng/cnSentimentR")
 
+## Example for file train_set.csv ====
+## "sentiment","content"
+## 1,你是个好人
+## 0,你是个混蛋
+## Example End ======================
 train.set <- read.csv("./train_set.csv", header = T, sep = ",", stringsAsFactors = F)
 
 train.set <- train.set[,c("sentiment", "content")]
